@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
+import { Layout } from "../components/Layout";
+
 import { HomePage } from "../pages/Home";
 import { ClientPage } from "../pages/Client";
 
@@ -7,7 +9,12 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/clients" element={<ClientPage />} />
+
+      <Route element={<Layout />}>
+        <Route path="/clients" element={<ClientPage />} />
+        <Route path="/clients/selected" element={<>a</>} />
+        <Route path="/logout" element={<>b</>} />
+      </Route>
     </Routes>
   );
 }

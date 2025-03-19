@@ -38,6 +38,7 @@ export const HomePage = () => {
 
           <ButtonMain
             label={t("home_button_label_open")}
+            size="lg"
             onClick={handleSubmit}
           />
         </ContentPage>

@@ -1,9 +1,62 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const ContainerPage = styled.div`
+  background-color: ${({ theme }) => theme.palette.background.default};
+  margin: 20px 0;
+`;
+
+export const CardListContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  margin-bottom: 20px;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const InfoPage = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 5px;
+`;
+
+export const QtdFoundPerPage = styled.p`
+  color: ${({ theme }) => theme.palette.text.primary};
+  font-size: 18px;
+  font-weight: 400;
+`;
+
+export const ClientPerPage = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+
+  span {
+    color: ${({ theme }) => theme.palette.text.primary};
+    font-size: 18px;
+    font-weight: 400;
+  }
+`;
+
+export const PageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  color: ${({ theme }) => theme?.palette?.primary?.main ?? "#000"};
+
+  padding: 20px 0;
 `;
