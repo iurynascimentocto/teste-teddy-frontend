@@ -1,4 +1,24 @@
 {
-  "welcome_message": "Welcome to My App!",
-  "client_message": "Page Client"
+  "home_welcome_message": "Hello, welcome!",
+  "home_input_placeholder": "Enter your name:",
+  "home_button_label_open": "Enter",
+
+  "nav_label_clients": "Clients",
+  "nav_label_clients_selected": "Selected Clients",
+  "nav_label_logout": "Logout",
+  "nav_user_hello": "Hello",
+
+  "client_clients_found": "found clients",
+  "client_per_page": "Customers per page",
+  "client_btn_create_client": "Create client",
+  "client_btn_edit_client": "Edit client",
+  "client_btn_delete_client": "Delete client",
+  "client_modal_delete_description": "You are about to delete the client",
+
+  "card_label_salary": "Salary",
+  "card_label_company": "Company",
+
+  "client_input_label_name": "Enter name",
+  "client_input_label_salary": "Enter salary",
+  "client_input_label_company": "Enter the company value"
 }

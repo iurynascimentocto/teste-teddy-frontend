@@ -30,7 +30,7 @@ export const CardContainer = styled.div`
 
 export const ActionContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
 

@@ -32,6 +32,10 @@ export const InfoPage = styled.div`
   align-items: center;
 
   margin-bottom: 5px;
+
+  @media (max-width: 480px) {
+    display: block;
+  }
 `;
 
 export const QtdFoundPerPage = styled.p`
@@ -44,12 +48,17 @@ export const ClientPerPage = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  gap: 9px;
 
   span {
     color: ${({ theme }) => theme.palette.text.primary};
     font-size: 18px;
     font-weight: 400;
+  }
+
+  .MuiInputBase-root {
+    height: 25px;
+    font-size: 12px;
   }
 `;
 
@@ -59,4 +68,25 @@ export const PageContainer = styled.div`
   align-items: center;
 
   padding: 20px 0;
+
+  .MuiPaginationItem-root {
+    border-radius: 4px;
+    width: 35px;
+    height: 35px;
+
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .MuiPaginationItem-root.Mui-selected {
+    border-radius: 4px;
+    background-color: ${({ theme }) => theme.palette.primary.main};
+    color: ${({ theme }) => theme.palette.text.secondary};
+    width: 35px;
+    height: 35px;
+  }
+  .MuiPaginationItem-ellipsis {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;

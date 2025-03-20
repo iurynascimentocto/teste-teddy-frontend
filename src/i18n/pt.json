@@ -11,7 +11,14 @@
   "client_clients_found": "clientes encontrados",
   "client_per_page": "Clientes por página",
   "client_btn_create_client": "Criar cliente",
+  "client_btn_edit_client": "Editar cliente",
+  "client_btn_delete_client": "Excluir cliente",
+  "client_modal_delete_description": "Você está prestes a excluir o cliente",
 
   "card_label_salary": "Salário",
-  "card_label_company": "Empresa"
+  "card_label_company": "Empresa",
+
+  "client_input_label_name": "Digite o nome",
+  "client_input_label_salary": "Digite o salário",
+  "client_input_label_company": "Digite o valor da empresa"
 }

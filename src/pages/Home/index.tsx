@@ -31,6 +31,7 @@ export const HomePage = () => {
 
           <InputMain
             type="text"
+            inputSize="lg"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={t("home_input_placeholder")}
