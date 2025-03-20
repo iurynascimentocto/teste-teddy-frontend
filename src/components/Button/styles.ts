@@ -36,6 +36,8 @@ export const ButtonContainer = styled.button<{
   /* Largura ajustável com base na propriedade 'width' */
   width: ${({ width }) => (width ? `${width}px` : "100%")};
 
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+
   &:hover {
     border: 2px ${({ theme }) => theme.palette.grey[300]} solid;
 

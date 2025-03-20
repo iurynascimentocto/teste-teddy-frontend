@@ -20,5 +20,7 @@
 
   "client_input_label_name": "Enter name",
   "client_input_label_salary": "Enter salary",
-  "client_input_label_company": "Enter the company value"
+  "client_input_label_company": "Enter the company value",
+
+  "field_required": "Field required"
 }

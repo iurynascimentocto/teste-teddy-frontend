@@ -20,5 +20,7 @@
 
   "client_input_label_name": "Digite o nome",
   "client_input_label_salary": "Digite o salário",
-  "client_input_label_company": "Digite o valor da empresa"
+  "client_input_label_company": "Digite o valor da empresa",
+
+  "field_required": "Campo obrigatório"
 }

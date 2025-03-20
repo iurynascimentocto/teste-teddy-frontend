@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { ModalDefault } from "../../../../components/ModalDefault";
 import { ButtonMain } from "../../../../components/Button";
 
+import { useClients } from "../../hooks/useClients";
+
 import { BodyContainer } from "./styles";
 
 interface IProps {
@@ -20,8 +22,13 @@ export const ModalDeleteClient: React.FC<IProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const handleDelete = () => {
-    console.log("delete id:", id);
+  const { deleteClient, loading } = useClients();
+
+  const handleDelete = async () => {
+    if (id) {
+      await deleteClient(id);
+      if (onClose) onClose();
+    }
   };
 
   return (
@@ -37,6 +44,7 @@ export const ModalDeleteClient: React.FC<IProps> = ({
 
         <ButtonMain
           label={t("client_btn_delete_client")}
+          disabled={loading}
           onClick={handleDelete}
         />
       </BodyContainer>

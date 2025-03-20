@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { MenuItem, Pagination, PaginationItem } from "@mui/material";
+import {
+  CircularProgress,
+  MenuItem,
+  Pagination,
+  PaginationItem,
+} from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 import { IClient } from "../../types/client";
@@ -9,6 +14,7 @@ import { CardList } from "../../components/CardList";
 import { ButtonMain } from "../../components/Button";
 import { ModalCreateClient } from "./components/ModalCreateClient";
 import { ModalDeleteClient } from "./components/ModalDeleteClient";
+import { useClients } from "./hooks/useClients";
 
 import {
   ContainerPage,
@@ -17,12 +23,17 @@ import {
   QtdFoundPerPage,
   ClientPerPage,
   PageContainer,
+  LoadingContainer,
 } from "./styles";
 
 const optionsPerPage = [4, 8, 16, 32, 50, 100];
 
 export const ClientPage = () => {
   const { t } = useTranslation();
+
+  const [page, setPage] = useState<number>(1);
+  const [perPage, setPerPage] = useState("16");
+  const { clients, loading } = useClients(page, Number(perPage));
 
   const [idEdit, setIdEdit] = useState<number>();
   const [itemDelete, setItemDelete] = useState<IClient>();
@@ -31,8 +42,6 @@ export const ClientPage = () => {
     useState<boolean>(false);
   const [openModalDeleteClient, setOpenModalDeleteClient] =
     useState<boolean>(false);
-
-  const [perPage, setPerPage] = useState("16");
 
   const handlePerPage = (event: SelectChangeEvent) => {
     setPerPage(event.target.value as string);
@@ -80,136 +89,13 @@ export const ClientPage = () => {
     setItemDelete(undefined);
   };
 
-  const data: IClient[] = [
-    {
-      id: 1,
-      name: "Marcos Oliveira",
-      salary_price: 4500.0,
-      company_price: 10000.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 2,
-      name: "Jose Silva",
-      salary_price: 2542.0,
-      company_price: 3425.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 3,
-      name: "Pedro Manso",
-      salary_price: 3953.0,
-      company_price: 4523.55,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 4,
-      name: "Maria do Carmo",
-      salary_price: 1343.0,
-      company_price: 1974.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 5,
-      name: "Enzo Guiralhões",
-      salary_price: 4353.0,
-      company_price: 8345.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 6,
-      name: "Enzo Guiralhões",
-      salary_price: 4353.0,
-      company_price: 8345.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 1,
-      name: "Marcos Oliveira",
-      salary_price: 4500.0,
-      company_price: 10000.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 2,
-      name: "Jose Silva",
-      salary_price: 2542.0,
-      company_price: 3425.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 3,
-      name: "Pedro Manso",
-      salary_price: 3953.0,
-      company_price: 4523.55,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 4,
-      name: "Maria do Carmo",
-      salary_price: 1343.0,
-      company_price: 1974.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 5,
-      name: "Enzo Guiralhões",
-      salary_price: 4353.0,
-      company_price: 8345.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 6,
-      name: "Enzo Guiralhões",
-      salary_price: 4353.0,
-      company_price: 8345.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 1,
-      name: "Marcos Oliveira",
-      salary_price: 4500.0,
-      company_price: 10000.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 2,
-      name: "Jose Silva",
-      salary_price: 2542.0,
-      company_price: 3425.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 3,
-      name: "Pedro Manso",
-      salary_price: 3953.0,
-      company_price: 4523.55,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-    {
-      id: 4,
-      name: "Maria do Carmo",
-      salary_price: 1343.0,
-      company_price: 1974.0,
-      created_at: "2025-03-18T03:13:03.192Z",
-      updated_at: "2025-03-18T03:13:03.192Z",
-    },
-  ];
+  if (loading) {
+    return (
+      <LoadingContainer>
+        <CircularProgress />
+      </LoadingContainer>
+    );
+  }
 
   return (
     <ContainerPage>
@@ -237,7 +123,7 @@ export const ClientPage = () => {
        */}
       <InfoPage>
         <QtdFoundPerPage>
-          <strong>{data.length}</strong>{" "}
+          <strong>{clients.length}</strong>{" "}
           <span>{t("client_clients_found")}:</span>
         </QtdFoundPerPage>
 
@@ -257,7 +143,7 @@ export const ClientPage = () => {
        * List
        */}
       <CardListContainer>
-        {data.map((item) => (
+        {clients.map((item) => (
           <CardList
             item={item}
             key={item.id}
@@ -285,10 +171,13 @@ export const ClientPage = () => {
       <PageContainer>
         <Pagination
           count={10}
-          page={5}
+          page={page}
           hidePrevButton
           hideNextButton
           renderItem={(item) => <PaginationItem {...item} />}
+          onChange={(_, p) => {
+            setPage(p);
+          }}
         />
       </PageContainer>
     </ContainerPage>
