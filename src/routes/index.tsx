@@ -4,6 +4,7 @@ import { Layout } from "../components/Layout";
 
 import { HomePage } from "../pages/Home";
 import { ClientPage } from "../pages/Client";
+import { SelectedClientPage } from "../pages/SelectedClient";
 import { LogoutPage } from "../pages/Logout";
 
 export default function AppRoutes() {
@@ -13,7 +14,7 @@ export default function AppRoutes() {
 
       <Route element={<Layout />}>
         <Route path="/clients" element={<ClientPage />} />
-        <Route path="/clients/selected" element={<>a</>} />
+        <Route path="/clients/selected" element={<SelectedClientPage />} />
         <Route path="/logout" element={<LogoutPage />} />
       </Route>
     </Routes>

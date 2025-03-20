@@ -22,5 +22,10 @@
   "client_input_label_salary": "Digite o salário",
   "client_input_label_company": "Digite o valor da empresa",
 
-  "field_required": "Campo obrigatório"
+  "field_required": "Campo obrigatório",
+
+  "page_selected_clients_title": "Clientes selecionados",
+  "selected_clients_btn_clear": "Limpar clientes selecionados",
+  "selected_client_btn_remove": "Remover cliente selecionado",
+  "selected_client_modal_remove_description": "Você está prestes a remover a seleção do cliente"
 }

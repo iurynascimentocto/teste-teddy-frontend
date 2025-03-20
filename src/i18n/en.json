@@ -22,5 +22,10 @@
   "client_input_label_salary": "Enter salary",
   "client_input_label_company": "Enter the company value",
 
-  "field_required": "Field required"
+  "field_required": "Field required",
+
+  "page_selected_clients_title": "Clientes selecionados",
+  "selected_clients_btn_clear": "Limpar clientes selecionados",
+  "selected_client_btn_remove": "Remover cliente selecionado",
+  "selected_client_modal_remove_description": "Você está prestes a remover a seleção do cliente"
 }

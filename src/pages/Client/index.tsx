@@ -15,6 +15,7 @@ import { ButtonMain } from "../../components/Button";
 import { ModalCreateClient } from "./components/ModalCreateClient";
 import { ModalDeleteClient } from "./components/ModalDeleteClient";
 import { useClients } from "./hooks/useClients";
+import { useSelectedClients } from "../SelectedClient/hooks/useSelectedClients";
 
 import {
   ContainerPage,
@@ -38,6 +39,8 @@ export const ClientPage = () => {
     Number(perPage)
   );
 
+  const { createOrRemoveSelectedClient } = useSelectedClients();
+
   const [idEdit, setIdEdit] = useState<number>();
   const [itemDelete, setItemDelete] = useState<IClient>();
 
@@ -54,8 +57,9 @@ export const ClientPage = () => {
    * Client Selected to save api
    * @param id client_id
    */
-  const handleSelected = (id: number) => {
-    console.log("TODO: Enpoint de client selecionado:", id);
+  const handleSelected = async (id: number) => {
+    await createOrRemoveSelectedClient(id);
+    alert("Adicionado com sucesso!");
   };
 
   /**
