@@ -1,27 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { ButtonMain } from "../../components/Button";
-
-import { ContainerPage, ContentPage } from "./styles";
 import { InputMain } from "../../components/Input";
 
+import { useUserStore } from "../../store/userStore";
+
+import { ContainerPage, ContentPage } from "./styles";
+
 export const HomePage = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const [name, setName] = useState("");
-  const navigate = useNavigate();
+  const { user, setUser } = useUserStore();
 
   const handleSubmit = () => {
-    if (name) {
-      // Redireciona para a lista de clientes
-      navigate("/clients");
-
-      // TODO: Salva sessao como esse fosse login
+    if (name.length > 1) {
+      setUser({ name });
     }
   };
+
+  useEffect(() => {
+    if (user?.name.length > 1) {
+      navigate("/clients");
+    }
+    // eslint-disable-next-line
+  }, [user?.name]);
 
   return (
     <Container>

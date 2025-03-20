@@ -8,6 +8,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { MenuHeader } from "./Menu";
 
+import { useUserStore } from "../../../store/userStore";
+
 import {
   Header,
   MenuIconContainer,
@@ -21,6 +23,8 @@ import {
 export const LayoutHeader = () => {
   const { t } = useTranslation();
 
+  const { user } = useUserStore();
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
@@ -28,8 +32,6 @@ export const LayoutHeader = () => {
 
   const [pathCurrent, setPathCurrent] = useState<string>(location?.pathname);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
-
-  const userName = "Usuario";
 
   const items = [
     {
@@ -56,7 +58,11 @@ export const LayoutHeader = () => {
 
   return (
     <>
-      <MenuHeader isOpen={openMenu} onClose={handleMenu} pathCurrent={pathCurrent} />
+      <MenuHeader
+        isOpen={openMenu}
+        onClose={handleMenu}
+        pathCurrent={pathCurrent}
+      />
 
       <Header>
         <Container
@@ -93,7 +99,8 @@ export const LayoutHeader = () => {
               </NavItems>
 
               <UserLabel>
-                <span>{t("nav_user_hello")},</span> <strong>{userName}</strong>!
+                <span>{t("nav_user_hello")},</span>{" "}
+                <strong>{user?.name}</strong>!
               </UserLabel>
             </HeaderContainer>
           </Container>

@@ -21,6 +21,9 @@ export interface IClientEdit {
 }
 
 export interface IClientResponse {
-  total: number;
-  clients: IClient[];
+  data: IClient[];
+  totalItems: number;
+  totalPages: number;
+  currentPage: number;
+  limit: number;
 }

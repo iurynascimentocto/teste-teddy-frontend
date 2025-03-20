@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   CircularProgress,
@@ -33,7 +33,10 @@ export const ClientPage = () => {
 
   const [page, setPage] = useState<number>(1);
   const [perPage, setPerPage] = useState("16");
-  const { clients, loading } = useClients(page, Number(perPage));
+  const { clients, fetchClients, loading, totalPages, totalItems } = useClients(
+    page,
+    Number(perPage)
+  );
 
   const [idEdit, setIdEdit] = useState<number>();
   const [itemDelete, setItemDelete] = useState<IClient>();
@@ -89,6 +92,14 @@ export const ClientPage = () => {
     setItemDelete(undefined);
   };
 
+  /**
+   * Get Data Clients
+   */
+  useEffect(() => {
+    fetchClients();
+    // eslint-disable-next-line
+  }, [page, perPage]);
+
   if (loading) {
     return (
       <LoadingContainer>
@@ -123,7 +134,7 @@ export const ClientPage = () => {
        */}
       <InfoPage>
         <QtdFoundPerPage>
-          <strong>{clients.length}</strong>{" "}
+          <strong>{totalItems}</strong>{" "}
           <span>{t("client_clients_found")}:</span>
         </QtdFoundPerPage>
 
@@ -170,7 +181,7 @@ export const ClientPage = () => {
        */}
       <PageContainer>
         <Pagination
-          count={10}
+          count={totalPages}
           page={page}
           hidePrevButton
           hideNextButton

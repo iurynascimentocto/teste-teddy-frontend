@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { clientService } from "../../../services/clientService";
 import { useClientStore } from "../../../store/clientStore";
@@ -6,7 +6,15 @@ import { useClientStore } from "../../../store/clientStore";
 import { IClientCreate, IClientEdit } from "../../../types/client";
 
 export const useClients = (page = 1, limit = 16) => {
-  const { clients, setClients } = useClientStore();
+  const {
+    clients,
+    totalItems,
+    totalPages,
+    setClients,
+    setTotalItems,
+    setTotalPages,
+  } = useClientStore();
+
   const [loading, setLoading] = useState(false);
 
   const fetchClients = async () => {
@@ -14,7 +22,9 @@ export const useClients = (page = 1, limit = 16) => {
 
     try {
       const data = await clientService.getAll({ page, limit });
-      setClients(data.clients);
+      setClients(data.data);
+      setTotalItems(data.totalItems);
+      setTotalPages(data.totalPages);
     } catch (error) {
       console.error("Erro ao buscar clientes:", error);
     } finally {
@@ -63,13 +73,10 @@ export const useClients = (page = 1, limit = 16) => {
     }
   };
 
-  useEffect(() => {
-    fetchClients();
-    // eslint-disable-next-line
-  }, [page, limit]);
-
   return {
     clients,
+    totalItems,
+    totalPages,
     loading,
     fetchClients,
     createClient,

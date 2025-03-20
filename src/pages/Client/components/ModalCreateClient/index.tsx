@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import { ModalDefault } from "../../../../components/ModalDefault";
 import { InputMain } from "../../../../components/Input";
 import { ButtonMain } from "../../../../components/Button";
+import { currencyFormatter } from "../../../../util/currencyFormatter";
+import { parseCurrency } from "../../../../util/parseCurrency";
 
 import { IClientCreate, IClientEdit } from "../../../../types/client";
 import { useClients } from "../../hooks/useClients";
@@ -25,17 +27,6 @@ export interface ICreate {
   salary_price: string;
   company_price: string;
 }
-
-const currencyFormatter = new Intl.NumberFormat("pt-BR", {
-  style: "currency",
-  currency: "BRL",
-});
-
-const parseCurrency = (value: string) => {
-  return Number(
-    value.replace(/\./g, "").replace(",", ".").replace("R$", "").trim()
-  );
-};
 
 export const ModalCreateClient: React.FC<IProps> = ({
   idEdit,
