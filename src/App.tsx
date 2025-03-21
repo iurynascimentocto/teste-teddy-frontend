@@ -2,6 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import { CssBaseline } from "@mui/material";
+import { ToastContainer } from "react-toastify";
 
 import AppRoutes from "./routes";
 import "./i18n";
@@ -19,6 +20,8 @@ function App() {
         <BrowserRouter>
           <AppRoutes />
         </BrowserRouter>
+
+        <ToastContainer />
       </StyledThemeProvider>
     </ThemeProvider>
   );

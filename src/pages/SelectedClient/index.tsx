@@ -7,6 +7,7 @@ import { IClient } from "../../types/client";
 import { CardList } from "../../components/CardList";
 import { ButtonMain } from "../../components/Button";
 import { ModalRemoveSelectedClient } from "./components/ModalRemoveSelectedClient";
+import { ModalRemoveAllSelectedClient } from "./components/ModalRemoveAllSelectedClient";
 import { useSelectedClients } from "./hooks/useSelectedClients";
 
 import {
@@ -27,6 +28,9 @@ export const SelectedClientPage = () => {
 
   const [itemRemove, setItemRemove] = useState<IClient>();
   const [openModalRemoveClient, setOpenModalRemoveClient] =
+    useState<boolean>(false);
+
+  const [openModalRemoveAllClient, setOpenModalRemoveAllClient] =
     useState<boolean>(false);
 
   /**
@@ -75,6 +79,16 @@ export const SelectedClientPage = () => {
       />
 
       {/**
+       * Modal Remove All Selected Client
+       */}
+      <ModalRemoveAllSelectedClient
+        isOpen={openModalRemoveAllClient}
+        onClose={() => {
+          setOpenModalRemoveAllClient(false);
+        }}
+      />
+
+      {/**
        * Total found and quantity of items per page
        */}
       <InfoPage>
@@ -96,14 +110,22 @@ export const SelectedClientPage = () => {
         ))}
       </CardListContainer>
 
+      {selectedClients.length === 0 && (
+        <p>{t("page_selected_clients_empty")}</p>
+      )}
+
       {/**
        * Action button clear all selected clients
        */}
-      <ButtonMain
-        label={t("selected_clients_btn_clear")}
-        outline
-        onClick={() => {}}
-      />
+      {selectedClients.length > 0 && (
+        <ButtonMain
+          label={t("selected_clients_btn_clear")}
+          outline
+          onClick={() => {
+            setOpenModalRemoveAllClient(true);
+          }}
+        />
+      )}
 
       {/**
        * Pagination List

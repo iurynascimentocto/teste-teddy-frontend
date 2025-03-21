@@ -39,7 +39,7 @@ export const ClientPage = () => {
     Number(perPage)
   );
 
-  const { createOrRemoveSelectedClient } = useSelectedClients();
+  const { createSelectedClient } = useSelectedClients();
 
   const [idEdit, setIdEdit] = useState<number>();
   const [itemDelete, setItemDelete] = useState<IClient>();
@@ -58,8 +58,7 @@ export const ClientPage = () => {
    * @param id client_id
    */
   const handleSelected = async (id: number) => {
-    await createOrRemoveSelectedClient(id);
-    alert("Adicionado com sucesso!");
+    await createSelectedClient(id);
   };
 
   /**

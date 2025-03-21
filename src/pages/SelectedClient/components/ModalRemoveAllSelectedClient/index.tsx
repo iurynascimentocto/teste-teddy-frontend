@@ -8,45 +8,36 @@ import { useSelectedClients } from "../../hooks/useSelectedClients";
 import { BodyContainer } from "./styles";
 
 interface IProps {
-  id?: number;
-  clientName?: string;
   isOpen?: boolean;
   onClose?: () => void;
 }
 
-export const ModalRemoveSelectedClient: React.FC<IProps> = ({
-  id,
-  clientName,
+export const ModalRemoveAllSelectedClient: React.FC<IProps> = ({
   isOpen,
   onClose,
 }) => {
   const { t } = useTranslation();
 
-  const { removeSelectedClient, loading } = useSelectedClients();
+  const { removeAllSelectedClient, loading } = useSelectedClients();
 
-  const handleDelete = async () => {
-    if (id) {
-      await removeSelectedClient(id);
-      if (onClose) onClose();
-    }
+  const handleRemove = async () => {
+    await removeAllSelectedClient();
+    if (onClose) onClose();
   };
 
   return (
     <ModalDefault
       isOpen={isOpen}
-      title={`${t("selected_client_btn_remove")}:`}
+      title={`${t("selected_clients_btn_clear")}:`}
       onClose={onClose}
     >
       <BodyContainer>
-        <p>
-          {t("selected_client_modal_remove_description")}:{" "}
-          <strong>{clientName}</strong>
-        </p>
+        <p>{t("selected_client_modal_removeall_description")}</p>
 
         <ButtonMain
-          label={t("selected_client_btn_remove")}
+          label={t("selected_clients_btn_clear")}
           disabled={loading}
-          onClick={handleDelete}
+          onClick={handleRemove}
         />
       </BodyContainer>
     </ModalDefault>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { ButtonMain } from "../../components/Button";
 import { InputMain } from "../../components/Input";
@@ -25,6 +26,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     if (user?.name.length > 1) {
+      toast.success(t("home_welcome_message_alert"));
       navigate("/clients");
     }
     // eslint-disable-next-line

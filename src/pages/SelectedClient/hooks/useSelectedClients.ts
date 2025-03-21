@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 import { useSelectedClientStore } from "../../../store/selectedClientStore";
 import { selectedClientService } from "../../../services/seletectedClientService";
@@ -25,17 +26,48 @@ export const useSelectedClients = (page = 1, limit = 16) => {
       setTotalPages(data.totalPages);
     } catch (error) {
       console.error("Erro ao buscar clientes selecionados:", error);
+      toast.error("Erro ao buscar cliente selecionado");
     } finally {
       setLoading(false);
     }
   };
 
-  const createOrRemoveSelectedClient = async (clientId: number) => {
+  const createSelectedClient = async (clientId: number) => {
     setLoading(true);
     try {
-      await selectedClientService.createOrRemove(clientId);
+      await selectedClientService.create(clientId);
+      toast.success("Adicionado com sucesso");
     } catch (error) {
-      console.error("Erro ao remover / add cliente selecionado:", error);
+      console.error("Erro ao add cliente selecionado:", error);
+      toast.error("Erro ao adicionar cliente selecionado");
+    } finally {
+      setLoading(false);
+      fetchSelectedClients();
+    }
+  };
+
+  const removeSelectedClient = async (clientId: number) => {
+    setLoading(true);
+    try {
+      await selectedClientService.remove(clientId);
+      toast.success("Removido com sucesso");
+    } catch (error) {
+      console.error("Erro ao remover cliente selecionado:", error);
+      toast.error("Erro ao remover cliente selecionado");
+    } finally {
+      setLoading(false);
+      fetchSelectedClients();
+    }
+  };
+
+  const removeAllSelectedClient = async () => {
+    setLoading(true);
+    try {
+      await selectedClientService.removeAll();
+      toast.success("Removido todos com sucesso");
+    } catch (error) {
+      console.error("Erro ao remover todos clientes selecionados:", error);
+      toast.error("Erro ao remover todos clientes selecionados");
     } finally {
       setLoading(false);
       fetchSelectedClients();
@@ -48,6 +80,8 @@ export const useSelectedClients = (page = 1, limit = 16) => {
     totalPages,
     loading,
     fetchSelectedClients,
-    createOrRemoveSelectedClient,
+    createSelectedClient,
+    removeSelectedClient,
+    removeAllSelectedClient,
   };
 };

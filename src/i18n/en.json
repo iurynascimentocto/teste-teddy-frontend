@@ -1,7 +1,9 @@
 {
   "home_welcome_message": "Hello, welcome!",
+  "home_welcome_message_alert": "Welcome!",
   "home_input_placeholder": "Enter your name:",
   "home_button_label_open": "Enter",
+  "logout_user_alert": "Logged out successfully",
 
   "nav_label_clients": "Clients",
   "nav_label_clients_selected": "Selected Clients",
@@ -24,8 +26,11 @@
 
   "field_required": "Field required",
 
-  "page_selected_clients_title": "Clientes selecionados",
-  "selected_clients_btn_clear": "Limpar clientes selecionados",
-  "selected_client_btn_remove": "Remover cliente selecionado",
-  "selected_client_modal_remove_description": "Você está prestes a remover a seleção do cliente"
+  "page_selected_clients_title": "Selected clients",
+  "page_selected_clients_empty": "No data! Select customers from the customer screen",
+  "selected_clients_btn_clear": "Clear selected clients",
+  "selected_client_btn_remove": "Remove selected client",
+  "selected_client_modal_remove_description": "You are about to remove the client selection",
+
+  "selected_client_modal_removeall_description": "You are about to remove all selected clients."
 }

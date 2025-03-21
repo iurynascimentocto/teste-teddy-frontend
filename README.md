@@ -27,7 +27,7 @@ Este é o repositório do frontend do projeto **Teddy**, uma aplicação React d
 ```
 /src
  ├── services
- │   ├── api.ts            # Configuração do Axios
+ │   ├── api.ts
  │   ├── clientService.ts
  │   ├── selectedClientService.ts
  │
@@ -38,8 +38,26 @@ Este é o repositório do frontend do projeto **Teddy**, uma aplicação React d
  │
  ├── pages
  │   ├── Home
+ │   │   ├── index.tsx
+ │   │   ├── styles.ts
+ │   │
  │   ├── Logout
+ │   │   ├── index.tsx
+ │   │   ├── styles.ts
+ │   │
  │   ├── Clients
+ │   │   ├── components
+ │   │   │   ├── ModalCreateClient
+ │   │   │   │   ├── index.tsx
+ │   │   │   │   ├── styles.ts
+ │   │   │   ├── ModalDeleteClient
+ │   │   │   │   ├── index.tsx
+ │   │   │   │   ├── styles.ts
+ │   │   ├── hooks
+ │   │   │   ├── useClients.ts
+ │   │   ├── index.tsx
+ │   │   ├── styles.ts
+ │   │
  │   ├── SelectedClient
  │   │   ├── components
  │   │   │   ├── ModalRemoveSelectedClient
@@ -52,18 +70,29 @@ Este é o repositório do frontend do projeto **Teddy**, uma aplicação React d
  │
  ├── components
  │   ├── Button
+ │   │   ├── index.tsx
+ │   │   ├── styles.ts
+ │   │
  │   ├── CardList
+ │   │   ├── index.tsx
+ │   │   ├── styles.ts
+ │   │
  │   ├── Input
+ │   │   ├── index.tsx
+ │   │   ├── styles.ts
+ │   │
  │   ├── ModalDefault
+ │   │   ├── index.tsx
+ │   │   ├── styles.ts
+ │   │
  │   ├── Layout
  │   │   ├── Header
  │   │   │   ├── index.tsx
  │   │   │   ├── styles.ts
+ │   │   ├── index.tsx
  │
  ├── assets
  │   ├── logo.svg
- │
- ├── tests
  │
  ├── styles
  │   ├── global.ts

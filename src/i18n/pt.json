@@ -1,7 +1,9 @@
 {
   "home_welcome_message": "Olá, seja bem-vindo!",
+  "home_welcome_message_alert": "Seja bem-vindo!",
   "home_input_placeholder": "Digite o seu nome:",
   "home_button_label_open": "Entrar",
+  "logout_user_alert": "Deslogado com sucesso",
 
   "nav_label_clients": "Clientes",
   "nav_label_clients_selected": "Clientes Selecionados",
@@ -25,7 +27,10 @@
   "field_required": "Campo obrigatório",
 
   "page_selected_clients_title": "Clientes selecionados",
+  "page_selected_clients_empty": "Nenhum dado! Selecione clientes na tela de clientes",
   "selected_clients_btn_clear": "Limpar clientes selecionados",
   "selected_client_btn_remove": "Remover cliente selecionado",
-  "selected_client_modal_remove_description": "Você está prestes a remover a seleção do cliente"
+  "selected_client_modal_remove_description": "Você está prestes a remover a seleção do cliente",
+
+  "selected_client_modal_removeall_description": "Você está prestes a remover todos clientes selecionados"
 }

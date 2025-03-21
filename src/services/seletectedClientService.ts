@@ -10,8 +10,16 @@ export const selectedClientService = {
     return response.data;
   },
 
-  createOrRemove: async (clientId: number): Promise<IClient> => {
+  create: async (clientId: number): Promise<IClient> => {
     const response = await api.post(`/selected-clients/${clientId}`, {});
     return response.data;
+  },
+
+  remove: async (clientId: number) => {
+    await api.delete(`/selected-clients/${clientId}`);
+  },
+
+  removeAll: async () => {
+    await api.delete(`/selected-clients`);
   },
 };
